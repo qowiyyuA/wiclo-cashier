@@ -165,7 +165,6 @@
 										  $tmp = 0;
 										  do{
 											$tmp = rand(10000,90000);
-											echo $tmp.",";
 											$cek_barcode = mysqli_query($conn,"select * from barang where kode_barcode='".$tmp."'");
 											$jum_bar = mysqli_num_rows($cek_barcode);
 											if($jum_bar>0){
