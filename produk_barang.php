@@ -160,10 +160,22 @@
                                           $warna = $_POST['warna'];
                                           $harga_bagi = $harga/1000;
                                           $harga_k = $harga_bagi."K";
-                                          while ($data = mysqli_fetch_assoc($cek_kode_kategori)) {
-                                            $kode_kategori = $data['kode_kategori'];
-                                          }
-                                          $kode_barcode = $kod_merk.".".$kategori.".".$warna.".".$ukuran.".".$harga_k;
+                                         
+										  $st = true;
+										  $tmp = 0;
+										  do{
+											$tmp = rand(10000,90000);
+											echo $tmp.",";
+											$cek_barcode = mysqli_query($conn,"select * from barang where kode_barcode='".$tmp."'");
+											$jum_bar = mysqli_num_rows($cek_barcode);
+											if($jum_bar>0){
+												$st = false;
+											}else{
+												$st = true;
+											}
+										  }while($st==false);
+										  
+                                          $kode_barcode = $tmp;
 
                                           $query=mysqli_query($conn,"insert into barang values('".$kode."','".$kategori."','".$warna."','".$kode_barcode."','".$nama."','".$merk."','".$ukuran."','".$warna."',".$stok.",".$harga.")");
                                           // echo "insert into barang values('".$kode."','".$kategori."','".$nama."','".$ukuran."','".$merk."',".$stok.",'".$satuan."',".$harga.")";
