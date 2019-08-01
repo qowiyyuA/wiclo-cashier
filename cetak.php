@@ -7,7 +7,7 @@ include 'koneksi.php';
 <body style="font-size:110px;">
     <?php
 $total_harga_penjualan = $_SESSION["grand_total_penjualan"];
-$kembalian = $_SESSION["grand_total_akhir"];
+$kembalian = $_SESSION["grand_total_penjualan"];
 $bayar = $_SESSION['uang_bayar'];
 $id_penjualan = $_SESSION["id_transaksi_jual"];
 $tgl_penjualan = $_SESSION['tgl_transaksi_jual'];
@@ -112,21 +112,17 @@ $tgl_penjualan = $_SESSION['tgl_transaksi_jual'];
         <tr><td>Terima Kasih</td></tr>
     </table>
 
+    <?php
+    unset($_SESSION["barang_jual"]);
+    unset($_SESSION["tgl_transaksi_jual"]);
+    unset($_SESSION["id_transaksi_jual"]);
+    // unset($_SESSION["datakasir"]);
+    unset($_SESSION["total_harga_jual"]);
+    unset($_SESSION["grand_total_penjualan"]);
+    ?>
     <script>
         window.print();
     </script>
-    <?php
-   unset($_SESSION["barang_jual"]);
-           unset($_SESSION["data_tgl_jual"]);
-           unset($_SESSION["kode_transaksi_jual"]);
-           unset($_SESSION["datakasir"]);
-           unset($_SESSION["nama_customer"]);
-			unset($_SESSION["alamat_customer"]);
-			unset($_SESSION["telp_customer"]);
-           unset($_SESSION["total_harga_jual"]);
-           unset($_SESSION["diskon_harga_jual"]);
-           unset($_SESSION["grand_total_jual"]);
-?>
 </body>
 
 </html>

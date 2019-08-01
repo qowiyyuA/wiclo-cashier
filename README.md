@@ -1,1 +1,0 @@
-# wiclo-cashier

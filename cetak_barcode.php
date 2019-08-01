@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>WICLO - Dasboard</title>
 </head>
 
 <body>
@@ -25,7 +27,7 @@ $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
             $id_barang = $_SESSION["barang_barcode"][$yy]["id_barang"];
             $barcode = $_SESSION["barang_barcode"][$yy]["kode_barcode"];
             $nama = $_SESSION["barang_barcode"][$yy]["nama_barang"];
-            $jumlah_jual = $_SESSION["barang_barcode"][$yy]["jumlah_barang"];
+            $jumlah_jual = $_SESSION["barang_barcode"][$yy]["jumlah_cetak"];
                 for($baris = 0; $baris< $jumlah_jual; $baris++){
                     if($cek==1){
                     ?>
@@ -75,16 +77,7 @@ $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
 
     </script>
     <?php
-   unset($_SESSION["barang_barcode"]);
-            unset($_SESSION["data_tgl_jual"]);
-            unset($_SESSION["kode_transaksi_jual"]);
-            unset($_SESSION["datakasir"]);
-            unset($_SESSION["nama_customer"]);
-			unset($_SESSION["alamat_customer"]);
-			unset($_SESSION["telp_customer"]);
-            unset($_SESSION["total_harga_jual"]);
-            unset($_SESSION["diskon_harga_jual"]);
-            unset($_SESSION["grand_total_jual"]);
+            unset($_SESSION["barang_barcode"]);
 ?>
 </body>
 
