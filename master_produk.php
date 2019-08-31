@@ -129,7 +129,7 @@ if (isset($_SESSION['username'])==false) {
 												$ukuran = $_POST['tfUkuranBarang'];
 												$harga = $_POST['tfHargaBarang'];
 												$potong_harga = $harga/1000;
-												$barcode = substr($merk, 0,3).".".$id.".".$potong_harga."K";
+												$barcode = substr($merk, 0,3).".".$id;
 												$stok = $_POST['tfStokBarang'];
 												$query = "insert into barang values('".$id."','".$kategori."','".$nama."','".$merk."','".$ukuran."','".$barcode."',".$stok.",".$harga.")";
 												// echo "<script>console.log($query)</script>";
