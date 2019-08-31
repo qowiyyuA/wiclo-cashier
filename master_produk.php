@@ -318,10 +318,16 @@ if (isset($_SESSION['username'])==false) {
 												<!-- modal edit -->
 												<?php
 													if (isset($_POST['btnUpdate'])) {
-														$id = $_POST['tfIdKategori'];
-														$nama = $_POST['tfNamaKategori'];
-
-														$query = "update kategori set NAMA_KATEGORI='".$nama."', updated_at=now() where ID_KATEGORI='".$id."'";
+														$kode = $_POST['tfKodeBarang'];
+														$nama = ucwords($_POST['tfNamaBarang']);
+														$merk = ucwords($_POST['tfMerkBarang']);
+														$ukuran = $_POST['tfUkuranBarang'];
+														$harga = $_POST['tfHargaBarang'];
+														$tmp = $_POST['cbNamaKategori'];
+														$cek = explode("|",$tmp);
+														$kategori = $cek[0];
+														
+														$query = "update barang set ID_KATEGORI='".$kategori."',NAMA_BARANG='".$nama."', MERK_BARANG='".$merk."', UKURAN_BARANG='".$ukuran."', HARGA=".$harga." where ID_BARANG='".$kode."'";
 														// echo $query;
 														$exc = mysqli_query($conn,$query);
 														if ($exc==1) {
@@ -329,7 +335,7 @@ if (isset($_SESSION['username'])==false) {
 														}else {
 															echo "<script>alert('Data Gagal Diupdate');</script>";
 														}
-														echo '<meta http-equiv="refresh" content="0;url=master_kategori.php"/>';
+														echo '<meta http-equiv="refresh" content="0;url=master_produk.php"/>';
 													}
 
 												?>
