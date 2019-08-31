@@ -34,7 +34,7 @@ $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
         <tr>
             <td style="padding:150px;">
                 <?php
-                        echo '<img style=" width:1500px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barcode, $generator::TYPE_CODE_128)) . '">';
+                        echo '<img style=" width:100px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barcode, $generator::TYPE_CODE_128)) . '">';
                         echo '<p style="font-size:120px; text-align:center;">'.$barcode.'</p>';
                     ?>
             </td>
@@ -44,7 +44,7 @@ $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
                     ?>
             <td style="padding:150px;">
                 <?php
-                        echo '<img style=" width:1500px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barcode, $generator::TYPE_CODE_128)) . '">';
+                        echo '<img style=" width:100px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barcode, $generator::TYPE_CODE_128)) . '">';
                         echo '<p style="font-size:120px; text-align:center;">'.$barcode.'</p>';
                     ?>
             </td>
@@ -54,7 +54,7 @@ $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
                     ?>
             <td style="padding:150px;">
                 <?php
-                        echo '<img style=" width:1500px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barcode, $generator::TYPE_CODE_128)) . '">';
+                        echo '<img style=" width:100px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barcode, $generator::TYPE_CODE_128)) . '">';
                         echo '<p style="font-size:120px; text-align:center;">'.$barcode.'</p>';
                     ?>
             </td>
@@ -77,7 +77,7 @@ $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
 
     </script>
     <?php
-            unset($_SESSION["barang_barcode"]);
+            // unset($_SESSION["barang_barcode"]);
 ?>
 </body>
 
