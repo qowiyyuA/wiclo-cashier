@@ -218,6 +218,12 @@ if (isset($_SESSION['username'])==false) {
 																				</select>
 																			</div>
 																		</div>
+																		<div class="col-sm-12">
+																			<div class="form-group form-group-default">
+																				<label>Password</label>
+																				<input name="tfPassword" type="text" class="form-control" value="<?php echo $row['PASSWORD']; ?>">
+																			</div>
+																		</div>
 																<div class="modal-footer no-bd">
 																	<button type="submit" name="btnUpdate" id="addRowButton" class="btn btn-primary">Update</button>
 																	<button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
@@ -236,8 +242,9 @@ if (isset($_SESSION['username'])==false) {
 														$id = $_POST['tfIdPegawai'];
 														$nama = $_POST['tfNamaPegawai'];
 														$status = $_POST['tfStatus'];
+														$password = $_POST['tfPassword'];
 
-														$query = "update pegawai set NAMA_PEGAWAI='".$nama."', STATUS='".$status."' where ID_PEGAWAI='".$id."'";
+														$query = "update pegawai set NAMA_PEGAWAI='".$nama."', STATUS='".$status."', PASSWORD='".$password."' where ID_PEGAWAI='".$id."'";
 														// echo $query;
 														$exc = mysqli_query($conn,$query);
 														if ($exc==1) {

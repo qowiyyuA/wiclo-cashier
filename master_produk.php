@@ -131,7 +131,7 @@ if (isset($_SESSION['username'])==false) {
 												$potong_harga = $harga/1000;
 												$barcode = substr($merk, 0,3).".".$id;
 												$stok = $_POST['tfStokBarang'];
-												$query = "insert into barang values('".$id."','".$kategori."','".$nama."','".$merk."','".$ukuran."','".$barcode."',".$stok.",".$harga.")";
+												$query = "insert into barang values('".$id."','".$kategori."','".$nama."','".$merk."','".$ukuran."','".$barcode."',".$stok.",".$harga.",0)";
 												// echo "<script>console.log($query)</script>";
 												// echo $query;
 												$exc = mysqli_query($conn,$query);
@@ -184,7 +184,7 @@ if (isset($_SESSION['username'])==false) {
 													</tfoot>
 													<tbody>
 														<?php
-															$query = mysqli_query($conn,"select b.ID_BARANG as id, b.KODE_BARCODE as barcode, k.NAMA_KATEGORI as kategori ,b.NAMA_BARANG as nama, b.STOK as stok, b.HARGA as harga  from barang b join kategori k on b.ID_KATEGORI=k.ID_KATEGORI");
+															$query = mysqli_query($conn,"select b.ID_BARANG as id, b.KODE_BARCODE as barcode, k.NAMA_KATEGORI as kategori ,b.NAMA_BARANG as nama, b.STOK as stok, b.HARGA as harga  from barang b join kategori k on b.ID_KATEGORI=k.ID_KATEGORI where b.status=1");
 															while($row = mysqli_fetch_array($query)){
 																$query1 = mysqli_query($conn,"select ifnull(sum(stok_masuk),0) as masuk from detil_pemasukan where id_barang='".$row['id']."'");
                                         $query2 = mysqli_query($conn,"select ifnull(sum(jumlah_jual),0) as keluar from detil_penjualan where id_barang='".$row['id']."'");
@@ -204,6 +204,29 @@ if (isset($_SESSION['username'])==false) {
 																			class="btn btn-link btn-primary btn-lg" data-toggle="modal" data-target="#detailModal<?php echo $row['id']; ?>">
 																			<i class="fa fa-edit"></i>
 																		</button>
+																		<form action="" method="post">
+																		<input hidden readonly type="text" name="kode" id="" value="<?php echo $row['id']; ?>">
+																		<button name="hapus" type="submit" title="Hapus"
+																			class="btn btn-link btn-danger btn-lg"">
+																			<i class="fa fa-trash"></i>
+																		</button>
+																		</form>
+																		<?php 
+																			if(isset($_POST['hapus'])){
+																				$id = $_POST['kode'];
+																					$query = "update barang set status=0 where ID_BARANG='".$id."'";
+																					// echo "<script>console.log($query)</script>";
+																					// echo $query;
+																					$exc = mysqli_query($conn,$query);
+																					if ($exc==1) {
+																						echo "<script>alert('Data Berhasil Dihapus');</script>";
+																					}else {
+																						echo "<script>alert('Data Gagal Dihapus');</script>";
+																					}
+																				
+																				echo '<meta http-equiv="refresh" content="0;url=master_produk.php"/>';
+																			}
+																		?>
 																	</div>
 															</td>
 														</tr>
